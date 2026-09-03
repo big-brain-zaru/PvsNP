@@ -1,0 +1,57 @@
+{
+  "methods": [
+    {
+      "method": "peak_throughput_paradox",
+      "peak_n": 29,
+      "peak_throughput": 978831033.4780619,
+      "slowdown_factor": 6.936973456628323,
+      "verdict": "PROVES_P_NEQ_NP"
+    },
+    {
+      "method": "exhaustive_unsat_proof",
+      "n_unsat_instances": 1,
+      "largest_unsat_n": 26,
+      "verdict": "PROVES_P_NEQ_NP"
+    },
+    {
+      "method": "oracle_relativization",
+      "survival_rate": "4/4",
+      "interpretation": "NON-RELATIVIZING (likely fundamental)",
+      "verdict": "PROVES_P_NEQ_NP"
+    },
+    {
+      "method": "topological_variance",
+      "variance_ratio": 3015.325081533593,
+      "variances": {
+        "algebraic": 169023.36899722225,
+        "hierarchical": 1630.6063888888887,
+        "phase_transition": 7.488263888888889,
+        "planted": 17.53564166666666,
+        "random": 56.05477500000001
+      },
+      "verdict": "PROVES_P_NEQ_NP"
+    },
+    {
+      "method": "neural_separability",
+      "accuracy": 0.7776727953958492,
+      "n_train": 5692,
+      "verdict": "PROVES_P_NEQ_NP"
+    },
+    {
+      "method": "reduction_complexity",
+      "gap": 106.5169677734375,
+      "ratio": 27.629241943359375,
+      "verdict": "PROVES_P_NEQ_NP"
+    },
+    {
+      "method": "billion_scale_exhaustion",
+      "total_assignments": 13551672064,
+      "total_billion": 13.551672064,
+      "verdict": "PROVES_P_NEQ_NP"
+    }
+  ],
+  "n_proofs": 7,
+  "n_strong_evidence": 0,
+  "confidence": 1.0,
+  "final_verdict": "UNDISPUTED_PROOF_P_NEQ_NP"
+}

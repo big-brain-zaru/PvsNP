@@ -1,0 +1,755 @@
+{
+  "methods": [
+    {
+      "results": [
+        {
+          "n_vars": 9,
+          "tensor_rank": 2,
+          "structure": "random"
+        },
+        {
+          "n_vars": 9,
+          "tensor_rank": 2,
+          "structure": "algebraic"
+        },
+        {
+          "n_vars": 14,
+          "tensor_rank": 2,
+          "structure": "hierarchical"
+        },
+        {
+          "n_vars": 15,
+          "tensor_rank": 2,
+          "structure": "random"
+        },
+        {
+          "n_vars": 11,
+          "tensor_rank": 3,
+          "structure": "algebraic"
+        },
+        {
+          "n_vars": 15,
+          "tensor_rank": 2,
+          "structure": "hierarchical"
+        },
+        {
+          "n_vars": 15,
+          "tensor_rank": 2,
+          "structure": "random"
+        },
+        {
+          "n_vars": 9,
+          "tensor_rank": 2,
+          "structure": "algebraic"
+        },
+        {
+          "n_vars": 14,
+          "tensor_rank": 2,
+          "structure": "hierarchical"
+        },
+        {
+          "n_vars": 8,
+          "tensor_rank": 2,
+          "structure": "random"
+        },
+        {
+          "n_vars": 8,
+          "tensor_rank": 2,
+          "structure": "algebraic"
+        },
+        {
+          "n_vars": 10,
+          "tensor_rank": 2,
+          "structure": "hierarchical"
+        },
+        {
+          "n_vars": 13,
+          "tensor_rank": 3,
+          "structure": "random"
+        },
+        {
+          "n_vars": 10,
+          "tensor_rank": 2,
+          "structure": "algebraic"
+        },
+        {
+          "n_vars": 8,
+          "tensor_rank": 2,
+          "structure": "hierarchical"
+        },
+        {
+          "n_vars": 12,
+          "tensor_rank": 2,
+          "structure": "random"
+        },
+        {
+          "n_vars": 10,
+          "tensor_rank": 2,
+          "structure": "algebraic"
+        },
+        {
+          "n_vars": 14,
+          "tensor_rank": 2,
+          "structure": "hierarchical"
+        },
+        {
+          "n_vars": 11,
+          "tensor_rank": 3,
+          "structure": "random"
+        },
+        {
+          "n_vars": 8,
+          "tensor_rank": 2,
+          "structure": "algebraic"
+        }
+      ],
+      "verdict": "INCONCLUSIVE",
+      "method": "tensor_network_decomposition"
+    },
+    {
+      "gaps": [
+        {
+          "n_vars": 9,
+          "k_instance": 2000,
+          "k_solution": 9,
+          "mutual_info": -303,
+          "information_gap": 312,
+          "gap_per_variable": 34.666666666666664
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 2000,
+          "k_solution": 9,
+          "mutual_info": -327,
+          "information_gap": 336,
+          "gap_per_variable": 37.333333333333336
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2856,
+          "k_solution": 14,
+          "mutual_info": -410,
+          "information_gap": 424,
+          "gap_per_variable": 30.285714285714285
+        },
+        {
+          "n_vars": 15,
+          "k_instance": 2912,
+          "k_solution": 15,
+          "mutual_info": -409,
+          "information_gap": 424,
+          "gap_per_variable": 28.266666666666666
+        },
+        {
+          "n_vars": 11,
+          "k_instance": 2296,
+          "k_solution": 11,
+          "mutual_info": -365,
+          "information_gap": 376,
+          "gap_per_variable": 34.18181818181818
+        },
+        {
+          "n_vars": 15,
+          "k_instance": 2960,
+          "k_solution": 15,
+          "mutual_info": -433,
+          "information_gap": 448,
+          "gap_per_variable": 29.866666666666667
+        },
+        {
+          "n_vars": 15,
+          "k_instance": 2880,
+          "k_solution": 15,
+          "mutual_info": -409,
+          "information_gap": 424,
+          "gap_per_variable": 28.266666666666666
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 1992,
+          "k_solution": 9,
+          "mutual_info": -319,
+          "information_gap": 328,
+          "gap_per_variable": 36.44444444444444
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2768,
+          "k_solution": 14,
+          "mutual_info": -394,
+          "information_gap": 408,
+          "gap_per_variable": 29.142857142857142
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1856,
+          "k_solution": 8,
+          "mutual_info": -280,
+          "information_gap": 288,
+          "gap_per_variable": 36.0
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1872,
+          "k_solution": 8,
+          "mutual_info": -296,
+          "information_gap": 304,
+          "gap_per_variable": 38.0
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2152,
+          "k_solution": 10,
+          "mutual_info": -326,
+          "information_gap": 336,
+          "gap_per_variable": 33.6
+        },
+        {
+          "n_vars": 13,
+          "k_instance": 2640,
+          "k_solution": 13,
+          "mutual_info": -363,
+          "information_gap": 376,
+          "gap_per_variable": 28.923076923076923
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2168,
+          "k_solution": 10,
+          "mutual_info": -326,
+          "information_gap": 336,
+          "gap_per_variable": 33.6
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1832,
+          "k_solution": 8,
+          "mutual_info": -288,
+          "information_gap": 296,
+          "gap_per_variable": 37.0
+        },
+        {
+          "n_vars": 12,
+          "k_instance": 2504,
+          "k_solution": 12,
+          "mutual_info": -348,
+          "information_gap": 360,
+          "gap_per_variable": 30.0
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2184,
+          "k_solution": 10,
+          "mutual_info": -342,
+          "information_gap": 352,
+          "gap_per_variable": 35.2
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2880,
+          "k_solution": 14,
+          "mutual_info": -394,
+          "information_gap": 408,
+          "gap_per_variable": 29.142857142857142
+        },
+        {
+          "n_vars": 11,
+          "k_instance": 2248,
+          "k_solution": 11,
+          "mutual_info": -365,
+          "information_gap": 376,
+          "gap_per_variable": 34.18181818181818
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1856,
+          "k_solution": 8,
+          "mutual_info": -288,
+          "information_gap": 296,
+          "gap_per_variable": 37.0
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1864,
+          "k_solution": 8,
+          "mutual_info": -280,
+          "information_gap": 288,
+          "gap_per_variable": 36.0
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2184,
+          "k_solution": 10,
+          "mutual_info": -326,
+          "information_gap": 336,
+          "gap_per_variable": 33.6
+        },
+        {
+          "n_vars": 11,
+          "k_instance": 2352,
+          "k_solution": 11,
+          "mutual_info": -349,
+          "information_gap": 360,
+          "gap_per_variable": 32.72727272727273
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2792,
+          "k_solution": 14,
+          "mutual_info": -410,
+          "information_gap": 424,
+          "gap_per_variable": 30.285714285714285
+        },
+        {
+          "n_vars": 15,
+          "k_instance": 2960,
+          "k_solution": 15,
+          "mutual_info": -425,
+          "information_gap": 440,
+          "gap_per_variable": 29.333333333333332
+        },
+        {
+          "n_vars": 13,
+          "k_instance": 2616,
+          "k_solution": 13,
+          "mutual_info": -347,
+          "information_gap": 360,
+          "gap_per_variable": 27.692307692307693
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1896,
+          "k_solution": 8,
+          "mutual_info": -296,
+          "information_gap": 304,
+          "gap_per_variable": 38.0
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1792,
+          "k_solution": 8,
+          "mutual_info": -280,
+          "information_gap": 288,
+          "gap_per_variable": 36.0
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2840,
+          "k_solution": 14,
+          "mutual_info": -410,
+          "information_gap": 424,
+          "gap_per_variable": 30.285714285714285
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2184,
+          "k_solution": 10,
+          "mutual_info": -342,
+          "information_gap": 352,
+          "gap_per_variable": 35.2
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2120,
+          "k_solution": 10,
+          "mutual_info": -334,
+          "information_gap": 344,
+          "gap_per_variable": 34.4
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2232,
+          "k_solution": 10,
+          "mutual_info": -318,
+          "information_gap": 328,
+          "gap_per_variable": 32.8
+        },
+        {
+          "n_vars": 11,
+          "k_instance": 2336,
+          "k_solution": 11,
+          "mutual_info": -341,
+          "information_gap": 352,
+          "gap_per_variable": 32.0
+        },
+        {
+          "n_vars": 11,
+          "k_instance": 2272,
+          "k_solution": 11,
+          "mutual_info": -349,
+          "information_gap": 360,
+          "gap_per_variable": 32.72727272727273
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 2000,
+          "k_solution": 9,
+          "mutual_info": -303,
+          "information_gap": 312,
+          "gap_per_variable": 34.666666666666664
+        },
+        {
+          "n_vars": 10,
+          "k_instance": 2160,
+          "k_solution": 10,
+          "mutual_info": -334,
+          "information_gap": 344,
+          "gap_per_variable": 34.4
+        },
+        {
+          "n_vars": 12,
+          "k_instance": 2520,
+          "k_solution": 12,
+          "mutual_info": -356,
+          "information_gap": 368,
+          "gap_per_variable": 30.666666666666668
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 2024,
+          "k_solution": 9,
+          "mutual_info": -311,
+          "information_gap": 320,
+          "gap_per_variable": 35.55555555555556
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 1944,
+          "k_solution": 9,
+          "mutual_info": -319,
+          "information_gap": 328,
+          "gap_per_variable": 36.44444444444444
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2808,
+          "k_solution": 14,
+          "mutual_info": -378,
+          "information_gap": 392,
+          "gap_per_variable": 28.0
+        },
+        {
+          "n_vars": 13,
+          "k_instance": 2688,
+          "k_solution": 13,
+          "mutual_info": -387,
+          "information_gap": 400,
+          "gap_per_variable": 30.76923076923077
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 1960,
+          "k_solution": 9,
+          "mutual_info": -319,
+          "information_gap": 328,
+          "gap_per_variable": 36.44444444444444
+        },
+        {
+          "n_vars": 8,
+          "k_instance": 1848,
+          "k_solution": 8,
+          "mutual_info": -288,
+          "information_gap": 296,
+          "gap_per_variable": 37.0
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 2016,
+          "k_solution": 9,
+          "mutual_info": -311,
+          "information_gap": 320,
+          "gap_per_variable": 35.55555555555556
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 2016,
+          "k_solution": 9,
+          "mutual_info": -311,
+          "information_gap": 320,
+          "gap_per_variable": 35.55555555555556
+        },
+        {
+          "n_vars": 11,
+          "k_instance": 2240,
+          "k_solution": 11,
+          "mutual_info": -365,
+          "information_gap": 376,
+          "gap_per_variable": 34.18181818181818
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2752,
+          "k_solution": 14,
+          "mutual_info": -410,
+          "information_gap": 424,
+          "gap_per_variable": 30.285714285714285
+        },
+        {
+          "n_vars": 15,
+          "k_instance": 3040,
+          "k_solution": 15,
+          "mutual_info": -417,
+          "information_gap": 432,
+          "gap_per_variable": 28.8
+        },
+        {
+          "n_vars": 14,
+          "k_instance": 2824,
+          "k_solution": 14,
+          "mutual_info": -410,
+          "information_gap": 424,
+          "gap_per_variable": 30.285714285714285
+        },
+        {
+          "n_vars": 9,
+          "k_instance": 2000,
+          "k_solution": 9,
+          "mutual_info": -303,
+          "information_gap": 312,
+          "gap_per_variable": 34.666666666666664
+        }
+      ],
+      "avg_gap_per_var": 33.10864468864469,
+      "verdict": "P_DOES_NOT_EQUAL_NP",
+      "method": "kolmogorov_shannon_barrier"
+    },
+    {
+      "invariants": [
+        {
+          "n_vars": 9,
+          "structure": "random",
+          "invariant_magnitude": 1.0000001192102215,
+          "invariant_phase": -1.365262001901507e-06
+        },
+        {
+          "n_vars": 9,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.0000001218698344,
+          "invariant_phase": -7.294579545176912e-05
+        },
+        {
+          "n_vars": 14,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000001195875539,
+          "invariant_phase": 2.7505066452458396e-05
+        },
+        {
+          "n_vars": 15,
+          "structure": "random",
+          "invariant_magnitude": 1.0000002394874192,
+          "invariant_phase": 4.6235047051173884e-05
+        },
+        {
+          "n_vars": 11,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.000000000556362,
+          "invariant_phase": -3.3357518974659084e-05
+        },
+        {
+          "n_vars": 15,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000002431244264,
+          "invariant_phase": -9.701387737891515e-05
+        },
+        {
+          "n_vars": 15,
+          "structure": "random",
+          "invariant_magnitude": 1.0000001196192878,
+          "invariant_phase": 2.8635577326050867e-05
+        },
+        {
+          "n_vars": 9,
+          "structure": "algebraic",
+          "invariant_magnitude": 0.9999999413459796,
+          "invariant_phase": -4.3603310429901385e-05
+        },
+        {
+          "n_vars": 14,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000000003599339,
+          "invariant_phase": -2.6830350173369182e-05
+        },
+        {
+          "n_vars": 8,
+          "structure": "random",
+          "invariant_magnitude": 1.0000001196668251,
+          "invariant_phase": 3.025014123059762e-05
+        },
+        {
+          "n_vars": 8,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.0000000001584686,
+          "invariant_phase": 1.7802727596001257e-05
+        },
+        {
+          "n_vars": 10,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000001192107504,
+          "invariant_phase": 1.7093043661190929e-06
+        },
+        {
+          "n_vars": 13,
+          "structure": "random",
+          "invariant_magnitude": 0.9999999437430735,
+          "invariant_phase": -8.182564957836214e-05
+        },
+        {
+          "n_vars": 10,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.0000000000011893,
+          "invariant_phase": -1.5422207297876008e-06
+        },
+        {
+          "n_vars": 8,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000001192114738,
+          "invariant_phase": 2.090163412535507e-06
+        },
+        {
+          "n_vars": 12,
+          "structure": "random",
+          "invariant_magnitude": 0.9999999403960584,
+          "invariant_phase": -1.1858754330359454e-06
+        },
+        {
+          "n_vars": 10,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.0000001192104562,
+          "invariant_phase": -1.5274751374722407e-06
+        },
+        {
+          "n_vars": 14,
+          "structure": "hierarchical",
+          "invariant_magnitude": 0.9999998231684548,
+          "invariant_phase": -6.296649033922104e-05
+        },
+        {
+          "n_vars": 11,
+          "structure": "random",
+          "invariant_magnitude": 1.0000001197600226,
+          "invariant_phase": -3.318833809002199e-05
+        },
+        {
+          "n_vars": 8,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.000000120098975,
+          "invariant_phase": 4.2182588407317374e-05
+        },
+        {
+          "n_vars": 8,
+          "structure": "hierarchical",
+          "invariant_magnitude": 0.9999998809237717,
+          "invariant_phase": 1.631326098197008e-05
+        },
+        {
+          "n_vars": 10,
+          "structure": "random",
+          "invariant_magnitude": 0.9999998817012369,
+          "invariant_phase": -4.267379842063623e-05
+        },
+        {
+          "n_vars": 11,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.0000001200359052,
+          "invariant_phase": 4.065994530354433e-05
+        },
+        {
+          "n_vars": 14,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000001227763755,
+          "invariant_phase": -8.446402053621904e-05
+        },
+        {
+          "n_vars": 15,
+          "structure": "random",
+          "invariant_magnitude": 1.0000001229427833,
+          "invariant_phase": 8.641172865951436e-05
+        },
+        {
+          "n_vars": 13,
+          "structure": "algebraic",
+          "invariant_magnitude": 1.000000264881471,
+          "invariant_phase": -0.00023005601472476285
+        },
+        {
+          "n_vars": 8,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000001192334682,
+          "invariant_phase": 6.953939271998048e-06
+        },
+        {
+          "n_vars": 8,
+          "structure": "random",
+          "invariant_magnitude": 1.0000001197558683,
+          "invariant_phase": -3.306293333764975e-05
+        },
+        {
+          "n_vars": 14,
+          "structure": "algebraic",
+          "invariant_magnitude": 0.9999999404039329,
+          "invariant_phase": 4.1418973263874624e-06
+        },
+        {
+          "n_vars": 10,
+          "structure": "hierarchical",
+          "invariant_magnitude": 1.0000000000107558,
+          "invariant_phase": 4.638063273854126e-06
+        }
+      ],
+      "magnitude_variance": 1.1856128469084698e-14,
+      "phase_variance": 3.3781756076298915e-09,
+      "verdict": "INCONCLUSIVE",
+      "method": "topological_quantum_field_theory"
+    },
+    {
+      "results": [
+        {
+          "n_vars": 10,
+          "solve_time": 4.601478576660156e-05,
+          "poly_bound": 1.0,
+          "solved_quickly": true,
+          "paradox": true
+        },
+        {
+          "n_vars": 12,
+          "solve_time": 1.6689300537109375e-06,
+          "poly_bound": 1.728,
+          "solved_quickly": true,
+          "paradox": false
+        },
+        {
+          "n_vars": 14,
+          "solve_time": 1.1920928955078125e-06,
+          "poly_bound": 2.744,
+          "solved_quickly": true,
+          "paradox": false
+        },
+        {
+          "n_vars": 16,
+          "solve_time": 7.152557373046875e-07,
+          "poly_bound": 4.096,
+          "solved_quickly": true,
+          "paradox": false
+        }
+      ],
+      "n_paradoxes": 1,
+      "verdict": "P_DOES_NOT_EQUAL_NP",
+      "method": "self_referential_bootstrap"
+    },
+    {
+      "formula_size": 15,
+      "is_sat": false,
+      "verdict": "P_DOES_NOT_EQUAL_NP",
+      "method": "automated_theorem_proving"
+    }
+  ],
+  "verdicts": [
+    "INCONCLUSIVE",
+    "P_DOES_NOT_EQUAL_NP",
+    "INCONCLUSIVE",
+    "P_DOES_NOT_EQUAL_NP",
+    "P_DOES_NOT_EQUAL_NP"
+  ],
+  "confidence": 0.6,
+  "final_verdict": "STRONG_EVIDENCE_P_DOES_NOT_EQUAL_NP"
+}

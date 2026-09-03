@@ -1,0 +1,48 @@
+# P vs NP Proof - Git Ignore File
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Compiled PDFs (optional - you may want to include these)
+# main.pdf
+# supplement.pdf
+
+# Large dataset files (keep summaries only)
+# If you have large data files, list them here
+# large_dataset.bin
+
+# Temporary files
+*.tmp
+*.bak

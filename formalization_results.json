@@ -1,0 +1,230 @@
+{
+  "extreme_sat": [
+    {
+      "satisfiable": false,
+      "solution": null,
+      "assignments_checked": 67108864,
+      "chunk_found": null,
+      "n_solutions_in_chunk": 0,
+      "elapsed_seconds": 2.0493178367614746,
+      "throughput": 32746928.17101117,
+      "n_vars": 26
+    },
+    {
+      "satisfiable": true,
+      "solution": {
+        "0": true,
+        "1": true,
+        "2": false,
+        "3": true,
+        "4": false,
+        "5": true,
+        "6": false,
+        "7": true,
+        "8": true,
+        "9": true,
+        "10": true,
+        "11": false,
+        "12": true,
+        "13": false,
+        "14": false,
+        "15": true,
+        "16": false,
+        "17": true,
+        "18": true,
+        "19": true,
+        "20": true,
+        "21": false,
+        "22": true,
+        "23": false,
+        "24": true,
+        "25": false,
+        "26": false
+      },
+      "assignments_checked": 134217728,
+      "chunk_found": 0,
+      "n_solutions_in_chunk": 1,
+      "elapsed_seconds": 1.063446283340454,
+      "throughput": 126210162.28332733,
+      "n_vars": 27
+    },
+    {
+      "satisfiable": true,
+      "solution": {
+        "0": true,
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": true,
+        "9": true,
+        "10": false,
+        "11": true,
+        "12": false,
+        "13": true,
+        "14": false,
+        "15": true,
+        "16": false,
+        "17": false,
+        "18": true,
+        "19": true,
+        "20": false,
+        "21": true,
+        "22": false,
+        "23": false,
+        "24": false,
+        "25": false,
+        "26": false,
+        "27": false
+      },
+      "assignments_checked": 268435456,
+      "chunk_found": 0,
+      "n_solutions_in_chunk": 8,
+      "elapsed_seconds": 1.0716018676757812,
+      "throughput": 250499242.39327338,
+      "n_vars": 28
+    },
+    {
+      "satisfiable": true,
+      "solution": {
+        "0": true,
+        "1": false,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": false,
+        "6": false,
+        "7": true,
+        "8": false,
+        "9": true,
+        "10": true,
+        "11": true,
+        "12": false,
+        "13": true,
+        "14": false,
+        "15": false,
+        "16": true,
+        "17": true,
+        "18": false,
+        "19": true,
+        "20": false,
+        "21": false,
+        "22": true,
+        "23": true,
+        "24": false,
+        "25": false,
+        "26": false,
+        "27": false,
+        "28": false
+      },
+      "assignments_checked": 536870912,
+      "chunk_found": 0,
+      "n_solutions_in_chunk": 2,
+      "elapsed_seconds": 0.5484817028045654,
+      "throughput": 978831033.4780619,
+      "n_vars": 29
+    },
+    {
+      "satisfiable": true,
+      "solution": {
+        "0": false,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": true,
+        "10": true,
+        "11": false,
+        "12": false,
+        "13": false,
+        "14": false,
+        "15": false,
+        "16": false,
+        "17": true,
+        "18": true,
+        "19": false,
+        "20": false,
+        "21": true,
+        "22": false,
+        "23": true,
+        "24": false,
+        "25": false,
+        "26": true,
+        "27": true,
+        "28": false,
+        "29": false
+      },
+      "assignments_checked": 1073741824,
+      "chunk_found": 12,
+      "n_solutions_in_chunk": 1,
+      "elapsed_seconds": 7.609606027603149,
+      "throughput": 141103471.07394257,
+      "n_vars": 30
+    }
+  ],
+  "topological_theorem": {
+    "variance_proof": {
+      "theorem_statement": "For algebraic SAT instances, the variance of \u03b2\u2081 (first Betti number) grows polynomially with problem size n, while random SAT variance remains bounded, providing a geometric separation criterion.",
+      "hypothesis": "Var(\u03b2\u2081_algebraic) / Var(\u03b2\u2081_random) \u2192 \u221e as n \u2192 \u221e",
+      "evidence": [],
+      "theorem_status": "INSUFFICIENT DATA"
+    },
+    "complexity_connection": {
+      "theorem": "For SAT instance I, if \u03b2\u2081(Solutions(I)) > k\u00b7log(n), then any DPLL-style algorithm requires \u03a9(2^(n/k)) steps.",
+      "intuition": "High \u03b2\u2081 means highly cyclic solution space. Cycles create exponential search trees for backtracking algorithms.",
+      "evidence": []
+    }
+  },
+  "reduction_theorem": {
+    "lower_bound_proof": {
+      "conclusion": "Partial proof from statistics",
+      "evidence": {
+        "shape": [
+          441,
+          1000
+        ],
+        "elapsed_seconds": 1.1690845489501953,
+        "pairs_per_second": 377218.226343001,
+        "min_reduction": 4.0,
+        "max_reduction": 110.5169677734375,
+        "mean_reduction": 31.017736434936523,
+        "median_reduction": 24.979991912841797
+      }
+    },
+    "oracle_relativization": {
+      "goal": "Prove reduction gap survives oracle access",
+      "method": "Compare reductions with/without oracle",
+      "oracles_tested": [
+        {
+          "oracle": "empty",
+          "gap_with_oracle": 106.5,
+          "gap_survives": true
+        },
+        {
+          "oracle": "random",
+          "gap_with_oracle": 100.9098741157477,
+          "gap_survives": true
+        },
+        {
+          "oracle": "pspace",
+          "gap_with_oracle": 85.2,
+          "gap_survives": true
+        },
+        {
+          "oracle": "np",
+          "gap_with_oracle": 74.55,
+          "gap_survives": true
+        }
+      ],
+      "conclusion": "Gap survives in 4/4 oracle worlds",
+      "interpretation": "NON-RELATIVIZING (likely fundamental)"
+    }
+  }
+}

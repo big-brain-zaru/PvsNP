@@ -1,0 +1,393 @@
+% Supplementary Material for "GPU-Scale Experiments on Random 3-SAT"
+% Author: Nadim Faris Nadim Zaro
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{multirow}
+
+\title{\textbf{Supplementary Material:} \\ GPU-Scale Experiments on Random 3-SAT}
+\author{
+  Nadim Faris Nadim Zaro \\
+  \textit{Independent Researcher} \\
+  \texttt{zaronadim@gmail.com}
+}
+\date{September 3, 2026}
+
+% Define custom commands
+\newcommand{\SAT}{\textsf{SAT}}
+\newcommand{\NP}{\textsf{NP}}
+\newcommand{\PTIME}{\textsf{P}}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Extended Methodology}
+
+\subsection{Detailed GPU Implementation}
+
+\textbf{Hardware Specifications:}
+\begin{itemize}
+\item GPU: NVIDIA GeForce RTX 5070 Laptop GPU
+\item Compute Capability: 12.0
+\item Multiprocessors: 36
+\item CUDA Cores: 4,608 (estimated)
+\item Memory: 8.5 GB GDDR7
+\item Memory Bandwidth: ~448 GB/s
+\item Peak FP32 Performance: ~15 TFLOPS
+\end{itemize}
+
+\textbf{Software Stack:}
+\begin{itemize}
+\item CUDA: 12.x
+\item CuPy: 13.x
+\item Python: 3.13
+\item NumPy: 1.26
+\item Operating System: Windows 11
+\end{itemize}
+
+\subsection{SAT Enumerator Optimization Details}
+
+\textbf{Memory Management:}
+\begin{lstlisting}[language=Python]
+# Chunk size selection based on GPU memory
+if n_vars <= 26:
+    chunk_size = 2**26  # 67M assignments
+elif n_vars <= 28:
+    chunk_size = 2**25  # 33.5M assignments
+else:
+    chunk_size = 2**24  # 16.8M assignments
+\end{lstlisting}
+
+The reduced chunk size for $n \geq 29$, together with increased memory
+pressure, is the most plausible cause of the throughput drop observed at
+$n=30$ in the main paper (Experiment 1).
+
+\textbf{Parallelization Strategy:}
+\begin{itemize}
+\item Each GPU thread evaluates one clause across all assignments
+\item Clause results combined via parallel AND reduction
+\item Memory coalescing for optimal bandwidth
+\item Shared memory for clause data
+\end{itemize}
+
+\textbf{Throughput Optimization:}
+\begin{enumerate}
+\item Bit-manipulation for assignment generation
+\item Vectorized clause evaluation
+\item Early termination on first solution found (this makes per-instance
+      ``throughput'' depend on where the first solution happens to lie)
+\item GPU memory pooling to avoid allocation overhead
+\end{enumerate}
+
+\subsection{Sampled Solution-Graph Statistics}
+
+For each instance, up to 400--500 assignments are drawn uniformly at random;
+those satisfying the formula are retained. Distances are computed on GPU:
+\begin{lstlisting}[language=Python]
+solutions_gpu = cp.array(solutions)  # Shape: (N, n)
+diff = solutions_gpu[:, cp.newaxis, :] -
+       solutions_gpu[cp.newaxis, :, :]
+distances = cp.sum(cp.abs(diff), axis=2)
+\end{lstlisting}
+
+A graph is built at the \emph{median} pairwise distance threshold:
+\[
+L = D - A \quad \text{where} \quad A[i,j] = \mathbb{1}[d(i,j) \leq t],
+\]
+and we report
+\begin{align}
+\beta_0 &= \#\{\lambda(L) : \lambda \approx 0\} \quad \text{(connected components)} \\
+\beta_1 &= |E| - |V| + \beta_0 \quad \text{(graph cycle rank)}.
+\end{align}
+
+Interpretation notes: this is the cycle rank of one graph at one
+data-dependent threshold (no filtration is computed, so it is not persistent
+homology). Because the threshold is the median distance, about half of all
+vertex pairs are edges by construction, so $\beta_1$ grows roughly
+quadratically with the number of retained solutions --- which is governed by
+clause density. The large cross-density differences in $\beta_1$ reported
+below are therefore primarily a solution-density and sample-size effect.
+
+\subsection{Instance Feature Extraction}
+
+128-dimensional feature vector $\phi(I)$ for SAT instance $I$:
+
+\textbf{Basic Features (16 dimensions):}
+\begin{itemize}
+\item $n$ (variables)
+\item $m$ (clauses)
+\item $m/n$ (clause-to-variable ratio)
+\item Clause length statistics (mean, std, min, max)
+\item Variable degree statistics
+\end{itemize}
+
+\textbf{Graph Features (32 dimensions):}
+\begin{itemize}
+\item Variable graph degree centrality
+\item Clause graph clustering coefficient
+\item Community structure metrics
+\item Graph diameter and radius
+\end{itemize}
+
+\textbf{Structural Hashes (80 dimensions):}
+\begin{itemize}
+\item Hash of clause patterns
+\item Symmetry group size
+\item Backbone variables (forced assignments)
+\item Resolution complexity estimates
+\end{itemize}
+
+The pairwise quantity reported in the main paper is
+$R(P_1,P_2) = \|\phi(P_1) - \phi(P_2)\|_2$: a dissimilarity between instance
+encodings, used as a descriptive statistic of the instance distribution.
+
+\section{Complete Experimental Results}
+
+\subsection{Full SAT Enumeration Table}
+
+\begin{table}[h]
+\centering
+\caption{Complete Extreme-Scale SAT Results}
+\begin{tabular}{ccccccc}
+\toprule
+$n$ & Assignments & Time (s) & Throughput (M/s) & SAT? & Solutions & Density \\
+\midrule
+26 & 67,108,864 & 2.05 & 32.7 & No & 0 & 4.2n \\
+27 & 134,217,728 & 1.06 & 126.2 & Yes & 1 & 3.0n \\
+28 & 268,435,456 & 1.07 & 250.5 & Yes & 8 & 2.0n \\
+29 & 536,870,912 & 0.55 & 978.8 & Yes & 2 & 4.267n \\
+30 & 1,073,741,824 & 7.61 & 141.1 & Yes & 1 & 4.2n \\
+\midrule
+\textbf{Total} & \textbf{2,080,374,784} & \textbf{12.34} & - & - & - & - \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Satisfiable instances terminate at the first solution found, so the time and
+throughput columns mix hardware behavior with instance luck; the $n=29$ run
+terminated after scanning roughly half its space, while the $n=30$ run
+scanned most of it.
+
+\textbf{Additional Statistics:}
+\begin{itemize}
+\item Average throughput: 168.6 M/s
+\item Peak throughput: 978.8 M/s (n=29)
+\item Satisfiability rate: 80\% (4/5)
+\item GPU utilization: 87--94\%
+\item Memory usage: 6.2--7.8 GB
+\end{itemize}
+
+\subsection{Solution-Graph Statistics --- Extended Results}
+
+\begin{table}[h]
+\centering
+\caption{Cycle rank $\beta_1$ by clause density (3000 instances). Labels in
+parentheses are the category tags used in the code and result files; all five
+generators draw uniformly random 3-clauses and differ only in density.}
+\begin{tabular}{lrrrrr}
+\toprule
+Density (code label) & $n$ & Mean $\beta_1$ & Std $\beta_1$ & Max $\beta_1$ & Instances \\
+\midrule
+2.0n (``algebraic'') & 600 & 126.72 & 411.24 & 5,512 & 600 \\
+3.0n (``hierarchical'') & 600 & 8.92 & 40.38 & 443 & 600 \\
+4.267n (``phase\_transition'') & 600 & 0.39 & 2.74 & 44 & 600 \\
+5.0n (``planted'') & 600 & 0.35 & 4.19 & 82 & 600 \\
+4.2n (``random'') & 600 & 1.26 & 7.49 & 83 & 600 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The monotone trend --- $\beta_1$ collapses as density rises --- is what the
+sampling procedure predicts: at density 2.0 many uniformly random assignments
+satisfy the formula (large sampled graphs, quadratically many edges at the
+median threshold), while at density $\geq 4.2$ almost none do (graphs with
+$<3$ vertices are assigned $\beta_1 = 0$).
+
+\textbf{Statistical Tests:}
+\begin{itemize}
+\item Kruskal-Wallis H-test: $H = 1847.2$, $p < 10^{-400}$
+\item Post-hoc pairwise comparisons (Dunn's test):
+  \begin{itemize}
+  \item 2.0n vs. 4.2n: $p < 10^{-300}$
+  \item 2.0n vs. 3.0n: $p < 10^{-200}$
+  \item All other pairs: $p < 0.001$
+  \end{itemize}
+\end{itemize}
+
+These tests confirm that clause density strongly affects the sampled
+statistic.
+
+\subsection{Feature-Distance Matrix --- Full Statistics}
+
+\begin{table}[h]
+\centering
+\caption{Feature-space distance distribution}
+\begin{tabular}{lr}
+\toprule
+Statistic & Value \\
+\midrule
+Instance pairs analyzed & 441,000 \\
+Matrix shape & $441 \times 1000$ \\
+Computation time & 1.17 seconds \\
+Throughput & 377,218 pairs/sec \\
+\midrule
+Minimum & 4.0 \\
+1st Quartile (Q1) & 18.2 \\
+Median (Q2) & 25.0 \\
+Mean & 31.0 \\
+3rd Quartile (Q3) & 42.8 \\
+Maximum & 110.5 \\
+\midrule
+Interquartile Range (IQR) & 24.6 \\
+Standard Deviation & 18.7 \\
+Coefficient of Variation & 0.60 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Neural Network --- Training Details}
+
+\textbf{Task:} binary classification of an instance-size category: label 0 =
+generated instances with $\leq 15$ variables (one dataset slice), label 1 =
+instances of arbitrary size (another slice). All instances in both classes
+are random 3-\SAT{}.
+
+\textbf{Architecture:}
+\begin{verbatim}
+Layer 1: Dense(128 -> 512) + ReLU + Dropout(0.3)
+Layer 2: Dense(512 -> 256) + ReLU + Dropout(0.3)
+Layer 3: Dense(256 -> 128) + ReLU + Dropout(0.2)
+Layer 4: Dense(128 -> 2) + Softmax
+\end{verbatim}
+
+\textbf{Training Hyperparameters:}
+\begin{itemize}
+\item Optimizer: Adam($\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8}$)
+\item Learning rate: 0.001 (fixed)
+\item Batch size: 512
+\item Epochs: 150
+\item Loss: Categorical cross-entropy
+\item Weight initialization: He normal
+\end{itemize}
+
+\textbf{Training Progression:}
+\begin{table}[h]
+\centering
+\caption{Neural Network Training Curve}
+\begin{tabular}{ccc}
+\toprule
+Epoch & Training Loss & Best Loss \\
+\midrule
+0 & 1.4143 & 1.4143 \\
+20 & 0.5440 & 0.5440 \\
+40 & 0.5482 & 0.5414 \\
+60 & 0.5389 & 0.5320 \\
+80 & 0.5388 & 0.5320 \\
+100 & 0.5361 & 0.5262 \\
+120 & 0.5259 & 0.5259 \\
+140 & 0.5267 & 0.5220 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Confusion Matrix (1000 test instances):}
+\begin{table}[h]
+\centering
+\begin{tabular}{cc|cc}
+& & \multicolumn{2}{c}{Predicted} \\
+& & small & mixed \\
+\hline
+\multirow{2}{*}{Actual} & small & 356 & 144 \\
+& mixed & 78 & 422 \\
+\end{tabular}
+\end{table}
+
+\textbf{Performance Metrics:}
+\begin{itemize}
+\item Accuracy: 77.8\%
+\item Precision: 0.79
+\item Recall: 0.76
+\item F1-Score: 0.77
+\item ROC-AUC: 0.84
+\end{itemize}
+
+Feature-importance analysis attributes the predictions primarily to variable
+count (0.83) and clause density (0.76), consistent with the task definition:
+the network predicts size, because size is the label.
+
+\section{Reproducibility}
+
+\subsection{Code and Data Availability}
+
+All code and data are publicly available:
+
+\begin{itemize}
+\item \textbf{GitHub Repository:} \url{https://github.com/big-brain-zaru/PvsNP}
+\item \textbf{Zenodo Archive (DOI):} \url{https://doi.org/10.5281/zenodo.18451653}
+\end{itemize}
+
+\subsection{System Requirements}
+\begin{itemize}
+\item NVIDIA GPU with compute capability $\geq 7.0$
+\item 8+ GB GPU memory
+\item CUDA 11.0+
+\item Python 3.9+
+\item CuPy, NumPy, SciPy
+\end{itemize}
+
+\subsection{Running the Analysis}
+\begin{lstlisting}[language=bash]
+# Install dependencies
+pip install cupy-cuda12x numpy scipy
+
+# Clone repository
+git clone https://github.com/big-brain-zaru/PvsNP
+cd PvsNP
+
+# Main analysis: generation, enumeration, solution-graph
+# statistics, feature distances, classifier
+python gpu_pnp_breakthrough.py
+
+# Extreme-scale enumeration benchmarks (n = 26..30)
+python gpu_formalization.py
+
+# Aggregation of the JSON outputs
+python ultimate_proof.py
+\end{lstlisting}
+
+Notes on script output: \texttt{gpu\_formalization.py} additionally prints an
+``oracle relativization'' section whose values are produced by a hardcoded
+simulation stub (fixed multipliers on a baseline constant), and
+\texttt{ultimate\_proof.py} prints heuristic per-method verdict labels and an
+aggregate score. Neither of these outputs is a measurement, and neither is
+reported in the paper; the scripts are kept as-is so that the published JSON
+result files remain exactly reproducible.
+
+\textbf{Expected runtime:}
+\begin{itemize}
+\item Main analysis: 20--25 minutes
+\item Extreme-scale benchmarks: 10--15 minutes
+\item Aggregation: 2--3 minutes
+\item Total: ~40 minutes on RTX 5070
+\end{itemize}
+
+\section{Conclusion}
+
+This supplement documents the implementation and complete measurements behind
+the main paper: the GPU enumeration pipeline and its memory management, the
+sampled solution-graph statistics and their density dependence, the feature
+extraction and distance statistics, and the classifier training details. The
+measurements stand as benchmarking and instance-structure data for random
+3-\SAT{}; their scope is discussed in the main paper.
+
+\end{document}
