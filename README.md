@@ -1,6 +1,6 @@
 # GPU-Scale Experiments on Random 3-SAT
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18451653.svg)](https://doi.org/10.5281/zenodo.18451653)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18451652.svg)](https://doi.org/10.5281/zenodo.18451652)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 GPU-accelerated computational experiments on randomly generated 3-SAT instances — 13.55 billion assignment evaluations on a single consumer laptop GPU (NVIDIA RTX 5070): exhaustive-enumeration benchmarks up to 2³⁰ assignments, sampled solution-space statistics across clause densities, and feature-based instance classification.
@@ -106,7 +106,7 @@ Note on script output: `gpu_formalization.py` also prints an "oracle relativizat
          Solution-Space Sampling, and Learned Instance Features},
   author={Zaro, Nadim Faris Nadim},
   year={2026},
-  doi={10.5281/zenodo.18451653}
+  doi={10.5281/zenodo.18451652}
 }
 ```
 
